@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import {VariablesServiceProvider} from '../variables-service/variables-service';
 import 'rxjs/add/operator/map';
 
 let apiUrl = "http://api.vialidad.tk/";
@@ -12,7 +13,7 @@ let apiUrl = "http://api.vialidad.tk/";
 @Injectable()
 export class AuthServiceProvider {
 
-  constructor(public http: Http) {
+  constructor(public http: Http, public variables: VariablesServiceProvider) {
     console.log('Hello AuthServiceProvider Provider');
   }
 
@@ -21,7 +22,7 @@ export class AuthServiceProvider {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
 
-      this.http.post(apiUrl + "register", JSON.stringify(data), { headers }).subscribe(res => {
+      this.http.post(this.variables.host+ "register", JSON.stringify(data), { headers }).subscribe(res => {
         console.log(res);
         resolve(res.json());
       }), (err) => {
@@ -35,7 +36,7 @@ export class AuthServiceProvider {
     return new Promise((resolve, reject) => {
           let headers = new Headers();
           headers.append('Content-Type', 'application/json');
-          this.http.post(apiUrl + "authenticate", JSON.stringify(data), { headers }).subscribe(res => {
+          this.http.post(this.variables.host + "authenticate", JSON.stringify(data), { headers }).subscribe(res => {
             // console.log(res.json().data.user_id);
             try {
               window["plugins"].OneSignal.sendTag("userID", res.json().data.user_id);

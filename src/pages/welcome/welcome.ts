@@ -20,10 +20,10 @@ export class WelcomePage {
   }
 
   ionViewDidLoad() {
-    if (localStorage.getItem('userData') !== null &&
-      (JSON.parse(localStorage.getItem('userData')).data.expiration * 1000 > new Date().getTime() )) {
-      this.navCtrl.setRoot(HomePage);
-    }
+    // if (localStorage.getItem('userData') !== null &&
+    //   (JSON.parse(localStorage.getItem('userData')).data.expiration * 1000 > new Date().getTime() )) {
+    //   this.navCtrl.setRoot(HomePage);
+    // }
 
     console.log('ionViewDidLoad WelcomePage');
   }

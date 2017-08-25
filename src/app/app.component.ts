@@ -26,7 +26,13 @@ export class MyApp {
       {title: 'Codigos', component: QrCodePage},
       {title: 'Lista', component: ListPage}
     ];
+    if (localStorage.getItem('userData') !== null &&
+      (JSON.parse(localStorage.getItem('userData')).data.expiration * 1000 > new Date().getTime() )) {
+      this.rootPage = HomePage;
+      // this.nav.setRoot(HomePage);
+    }
   }
+
 
   initializeApp() {
     this.platform.ready().then(() => {
@@ -51,6 +57,8 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+
     });
   }
 

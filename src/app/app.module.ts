@@ -14,6 +14,7 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {AuthServiceProvider} from '../providers/auth-service/auth-service';
 import {QrServiceProvider} from '../providers/qr-service/qr-service';
+import { VariablesServiceProvider } from '../providers/variables-service/variables-service';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import {QrServiceProvider} from '../providers/qr-service/qr-service';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
-    QrServiceProvider
+    QrServiceProvider,
+    VariablesServiceProvider,
   ]
 })
 export class AppModule {

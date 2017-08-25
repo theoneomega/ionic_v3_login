@@ -34,7 +34,8 @@ export class LoginPage {
         this.responseData = result;
         // console.log(this.responseData);
         localStorage.setItem('userData', JSON.stringify(this.responseData));
-        this.navCtrl.push(HomePage);
+        this.navCtrl.setRoot(HomePage);
+        // this.navCtrl.push(HomePage);
       }, (err) => {
         console.log(err);
       })
